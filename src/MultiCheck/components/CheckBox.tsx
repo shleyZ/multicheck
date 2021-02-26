@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 type Props = {
   isChecked?: boolean,
@@ -9,21 +9,12 @@ type Props = {
 
 const CheckBoxItem: React.FunctionComponent<Props> = (props): JSX.Element => {
   const {handleChanged, isChecked, label} = props;
-  const [checked, setChecked] = useState<boolean>(false);
-  
-  useEffect(() => {
-    setChecked(isChecked || false);
-  }, [isChecked]);
-
-  useEffect(() => {
-    setChecked(!!isChecked);
-  }, []);
 
   return (
     <label>
       <input
         type="checkbox"
-        checked={checked}
+        checked={!!isChecked}
         onChange={handleChanged}
         {...props}
       />

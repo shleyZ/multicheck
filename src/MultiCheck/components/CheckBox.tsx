@@ -11,7 +11,7 @@ const CheckBoxItem: React.FunctionComponent<Props> = (props): JSX.Element => {
   const {handleChanged, isChecked, label} = props;
 
   return (
-    <label>
+    <label style={{display: 'block'}}>
       <input
         type="checkbox"
         checked={!!isChecked}

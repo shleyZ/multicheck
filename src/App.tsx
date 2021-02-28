@@ -30,7 +30,8 @@ const App: React.FunctionComponent = (): JSX.Element => {
     <MultiCheck label='my-multi-check' options={options}
                 onChange={onSelectedOptionsChange}
                 values={selectedValues}
-                columns={2}/>
+                columns={5}
+                />
     <div>
       <h2>Current selected values:</h2>
       <div>{selectedValues.join(',')}</div>

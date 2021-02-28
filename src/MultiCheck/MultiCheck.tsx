@@ -28,7 +28,7 @@ type Props = {
 }
 
 const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
-  const { label, options, values, onChange } = props;
+  const { label, options, values, onChange, columns } = props;
   const [checked, setChecked] = useState<string[]>([]);
   const [selectAllChecked, setSelectAllChecked] = useState<boolean>(false);
 
@@ -76,6 +76,73 @@ const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
       onChange(checkedOptions);
     }
   }, [checked])
+
+  // counts per columns
+  const columnCounts = Math.ceil(options.length / (columns || 1));
+  // column percent %
+  const columnWidths = 1/(columns || 1) * 100;
+
+  const selesctAll = (
+    <CheckBox 
+      handleChanged={onAllChanged} 
+      isChecked={!!selectAllChecked} 
+      label="Select All"
+      value="all"
+      />
+    )
+  /**
+   * render column by index
+   * @param {number} index - column index
+   */
+  const renderColumn = (index: number) => {
+    const columnDom = [];
+    if(index === 0) {
+      columnDom.push(selesctAll)
+      options.slice(0, columnCounts-1).map((opt: Option) => {
+        columnDom.push(
+          <CheckBox
+            handleChanged={onItemChanged} 
+            isChecked={checked.indexOf(String(opt.value)) !== -1}
+            key={opt.value}
+            label={opt.label}
+            value={opt.value}
+          />
+        )
+      })
+    } else {
+      const startIndex = (index - 1)*columnCounts + (columnCounts - 1)
+      options.slice(startIndex, columnCounts+startIndex).map((opt: Option) => {
+        columnDom.push(
+          <CheckBox
+            handleChanged={onItemChanged} 
+            isChecked={checked.indexOf(String(opt.value)) !== -1}
+            key={opt.value}
+            label={opt.label}
+            value={opt.value}
+          />
+        )
+      })
+    }
+    return (
+      <div 
+        style={{
+          width: `${columnWidths}%`, 
+          display: 'inline-block'
+        }}>
+        {columnDom}
+      </div>
+    );
+  }
+
+  // render all columns
+  const renderColumns = () => {
+    const res = [];
+    for(let i = 0; i < (columns || 1); i++) {
+      const columnDom = renderColumn(i)
+      res.push(columnDom)
+    }
+    return res;
+  }
   
   return (
     <div className='MultiCheck'>
@@ -85,25 +152,7 @@ const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
       </div>
       <div className="MultiCheckContentWrap">
         <div className="MultiCheckContent">
-          <div>
-            <CheckBox 
-              handleChanged={onAllChanged} 
-              isChecked={!!selectAllChecked} 
-              label="Select All"
-              value="all"
-              />
-          </div>
-          {
-            options.map((opt: Option) => 
-              <CheckBox
-                handleChanged={onItemChanged} 
-                isChecked={checked.indexOf(String(opt.value)) !== -1}
-                key={opt.value}
-                label={opt.label}
-                value={opt.value}
-              />
-            )
-          }
+          {renderColumns()}
         </div>
       </div>
     </div>

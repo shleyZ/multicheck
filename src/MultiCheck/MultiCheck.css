@@ -1,3 +1,18 @@
 /* TODO */
 .MultiCheck {
 }
+
+.MultiCheckLabel{
+  background-color: #DADADA;
+  padding: 8px;
+  font-weight: bold;
+}
+
+.MultiCheckContentWrap{
+  background-color: #F7F7F9;
+  padding: 8px;
+}
+
+.MultiCheckContent{
+  border: 1px solid #E5E5E5;
+}

@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import MultiCheck, {Option} from './MultiCheck/MultiCheck';
+import React, { useState } from 'react';
+import MultiCheck, { Option } from './MultiCheck/MultiCheck';
 
 const options: Option[] = [
   {label: 'aaa', value: '111',},

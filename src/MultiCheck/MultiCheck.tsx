@@ -28,7 +28,7 @@ type Props = {
 }
 
 const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
-  const { options, values, onChange } = props;
+  const { label, options, values, onChange } = props;
   const [checked, setChecked] = useState<string[]>([]);
   const [selectAllChecked, setSelectAllChecked] = useState<boolean>(false);
 
@@ -80,25 +80,32 @@ const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
   return (
     <div className='MultiCheck'>
       {/* TODO */}
-      <div>
-        <CheckBox 
-          handleChanged={onAllChanged} 
-          isChecked={!!selectAllChecked} 
-          label="Select All"
-          value="all"
-          />
+      <div className="MultiCheckLabel">
+        <label>{label}</label>
       </div>
-      {
-        options.map((opt: Option) => 
-          <CheckBox
-            handleChanged={onItemChanged} 
-            isChecked={checked.indexOf(String(opt.value)) !== -1}
-            key={opt.value}
-            label={opt.label}
-            value={opt.value}
-          />
-        )
-      }
+      <div className="MultiCheckContentWrap">
+        <div className="MultiCheckContent">
+          <div>
+            <CheckBox 
+              handleChanged={onAllChanged} 
+              isChecked={!!selectAllChecked} 
+              label="Select All"
+              value="all"
+              />
+          </div>
+          {
+            options.map((opt: Option) => 
+              <CheckBox
+                handleChanged={onItemChanged} 
+                isChecked={checked.indexOf(String(opt.value)) !== -1}
+                key={opt.value}
+                label={opt.label}
+                value={opt.value}
+              />
+            )
+          }
+        </div>
+      </div>
     </div>
   )
 }

@@ -28,7 +28,7 @@ type Props = {
 }
 
 const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
-  const { options, values } = props;
+  const { options, values, onChange } = props;
   const [checked, setChecked] = useState<string[]>([]);
   const [selectAllChecked, setSelectAllChecked] = useState<boolean>(false);
 
@@ -64,6 +64,18 @@ const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
       setSelectAllChecked(false)
     }
   }, []);
+
+  useEffect(() => {
+    if(onChange) {
+      const checkedOptions = [] as Option[];
+      options.forEach((option) => {
+        if(checked.indexOf(option.value) !== -1) {
+          checkedOptions.push(option)
+        }
+      })
+      onChange(checkedOptions);
+    }
+  }, [checked])
   
   return (
     <div className='MultiCheck'>

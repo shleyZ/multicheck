@@ -1,6 +1,6 @@
+import React, { useEffect, useState } from 'react';
+import CheckBox from './components/CheckBox';
 import './MultiCheck.css';
-
-import React from 'react';
 
 export type Option = {
   label: string,
@@ -28,9 +28,67 @@ type Props = {
 }
 
 const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
-  return <div className='MultiCheck'>
-    {/* TODO */}
-  </div>
+  const { options, values } = props;
+  const [checked, setChecked] = useState<string[]>([]);
+  const [selectAllChecked, setSelectAllChecked] = useState<boolean>(false);
+
+  const onAllChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if(selectAllChecked) {
+      setChecked([])
+    } else {
+      const allValues = [] as string[];
+      options.forEach((item: Option) => allValues.push(item.value))
+      setChecked(allValues)
+    }
+    setSelectAllChecked(!selectAllChecked)
+  }
+
+  const onItemChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const strValue = String(e.target.value);
+    const currentChecked = [...checked];
+    const index = currentChecked?.indexOf(strValue)
+    if(index === -1) {
+      currentChecked.push(strValue)
+    } else {
+      currentChecked?.splice(index, 1)
+    }
+    setChecked(currentChecked)
+    setSelectAllChecked(currentChecked.length === options.length)
+  }
+
+  useEffect(() => {
+    setChecked(values || []);
+    if(values && values.length === options.length) {
+      setSelectAllChecked(true)
+    } else {
+      setSelectAllChecked(false)
+    }
+  }, []);
+  
+  return (
+    <div className='MultiCheck'>
+      {/* TODO */}
+      <div>
+        <CheckBox 
+          handleChanged={onAllChanged} 
+          isChecked={!!selectAllChecked} 
+          label="Select All"
+          value="all"
+          />
+      </div>
+      {
+        options.map((opt: Option) => 
+          <CheckBox
+            handleChanged={onItemChanged} 
+            isChecked={checked.indexOf(String(opt.value)) !== -1}
+            key={opt.value}
+            label={opt.label}
+            value={opt.value}
+          />
+        )
+      }
+    </div>
+  )
 }
 
 export default MultiCheck;

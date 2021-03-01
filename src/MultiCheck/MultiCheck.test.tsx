@@ -1,6 +1,7 @@
 
 import { configure, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import toJson from 'enzyme-to-json';
 import 'jsdom-global/register';
 import React from 'react';
 import MultiCheck from './MultiCheck';
@@ -58,4 +59,13 @@ describe('MultiCheck', () => {
       done()
     });
   });
+
+  describe('snapshot', () => {
+    it('get snapshot', () => {
+      const wrapper = mount(
+        <MultiCheck label='my-multi-check' options={[]} />
+      );
+      expect(toJson(wrapper)).toMatchSnapshot();
+    })
+  })
 });

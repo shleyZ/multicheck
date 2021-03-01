@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MultiCheck snapshot get snapshot 1`] = `
+<MultiCheck
+  label="my-multi-check"
+  options={Array []}
+>
+  <div
+    className="MultiCheck"
+  >
+    <div
+      className="MultiCheckLabel"
+    >
+      <label>
+        my-multi-check
+      </label>
+    </div>
+    <div
+      className="MultiCheckContentWrap"
+    >
+      <div
+        className="MultiCheckContent"
+      >
+        <div
+          key="0"
+          style={
+            Object {
+              "display": "inline-block",
+              "width": "100%",
+            }
+          }
+        >
+          <CheckBoxItem
+            checked={false}
+            handleChanged={[Function]}
+            key="all"
+            label="Select All"
+            value="all"
+          >
+            <label
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              <input
+                checked={false}
+                onChange={[Function]}
+                type="checkbox"
+                value="all"
+              />
+              <span>
+                Select All
+              </span>
+            </label>
+          </CheckBoxItem>
+        </div>
+      </div>
+    </div>
+  </div>
+</MultiCheck>
+`;

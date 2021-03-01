@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckBox snapshot get snapshot 1`] = `
+<CheckBoxItem
+  checked={false}
+  handleChanged={[Function]}
+  value="no"
+>
+  <label
+    style={
+      Object {
+        "display": "block",
+      }
+    }
+  >
+    <input
+      checked={false}
+      onChange={[Function]}
+      type="checkbox"
+      value="no"
+    />
+    <span />
+  </label>
+</CheckBoxItem>
+`;

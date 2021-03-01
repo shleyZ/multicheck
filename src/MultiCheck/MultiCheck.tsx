@@ -138,9 +138,9 @@ const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
   }
 
   // render all columns
-  const renderColumns = () => {
+  const renderColumns = (columns: number) => {
     const res = [];
-    for(let i = 0; i < (columns || 1); i++) {
+    for(let i = 0; i < columns; i++) {
       const columnDom = renderColumn(i)
       res.push(columnDom)
     }
@@ -155,7 +155,7 @@ const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
       </div>
       <div className="MultiCheckContentWrap">
         <div className="MultiCheckContent">
-          {renderColumns()}
+          {renderColumns(columns || 1)}
         </div>
       </div>
     </div>

@@ -21,7 +21,7 @@ describe('MultiCheck', () => {
       done()
     });
 
-    it('renders the columns if columns is not provided', (done) => {
+    it('renders 1 columns if columns is not provided', (done) => {
       const options: Option[] = [
         {label: 'aaa', value: '111',},
         {label: 'bbb', value: '222',},
@@ -40,7 +40,7 @@ describe('MultiCheck', () => {
       done()
     });
 
-    it('renders the columns if columns provided', (done) => {
+    it('renders 6 columns if columns provided 6', (done) => {
       const options: Option[] = [
         {label: 'aaa', value: '111',},
         {label: 'bbb', value: '222',},
@@ -56,6 +56,25 @@ describe('MultiCheck', () => {
         <MultiCheck label='my-multi-check' options={options} columns={6}/>
       );
       expect(wrapper.find('.MultiCheckContent').children().length).toBe(6);
+      done()
+    });
+
+    it('renders 2 columns', (done) => {
+      const options: Option[] = [
+        {label: 'aaa', value: '111',},
+        {label: 'bbb', value: '222',},
+        {label: 'ccc', value: '333',},
+        {label: 'ddd', value: '444',},
+        {label: 'eee', value: '555',},
+        {label: 'fff', value: '666',},
+        {label: 'ggg', value: '777',},
+        {label: 'hhh', value: '888',},
+        {label: 'iii', value: '999',},
+      ]
+      const wrapper = mount(
+        <MultiCheck label='my-multi-check' options={options} columns={2}/>
+      );
+      expect(wrapper.find('.MultiCheckContent').children().length).toBe(2);
       done()
     });
   });

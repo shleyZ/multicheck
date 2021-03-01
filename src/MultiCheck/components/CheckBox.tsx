@@ -1,22 +1,22 @@
 import React from 'react';
 
 type Props = {
-  isChecked?: boolean,
+  checked?: boolean,
   label?: string,
   value: string,
   handleChanged?: (event: React.ChangeEvent<HTMLInputElement>) => void,
 }
 
 const CheckBoxItem: React.FunctionComponent<Props> = (props): JSX.Element => {
-  const {handleChanged, isChecked, label} = props;
+  const {handleChanged, checked, label, value} = props;
 
   return (
     <label style={{display: 'block'}}>
       <input
         type="checkbox"
-        checked={!!isChecked}
+        checked={!!checked}
         onChange={handleChanged}
-        {...props}
+        value={value}
       />
       <span>{label}</span>
     </label>

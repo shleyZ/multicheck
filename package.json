@@ -4,19 +4,27 @@
     "test": "jest"
   },
   "dependencies": {
+    "enzyme": "^3.11.0",
     "jest": "25.1.0",
     "react": "16.9.0",
     "react-dom": "16.9.0"
   },
   "devDependencies": {
-    "@types/jest": "25.1.1",
+    "@babel/preset-env": "^7.13.8",
+    "@babel/preset-flow": "^7.12.13",
+    "@babel/preset-react": "^7.12.13",
+    "@types/jest": "^26.0.20",
     "@types/node": "12.7.2",
     "@types/react": "16.9.2",
     "@types/react-dom": "16.9.0",
     "css-loader": "3.2.0",
+    "enzyme-adapter-react-16": "^1.15.6",
     "html-webpack-plugin": "3.2.0",
+    "jsdom": "^16.4.0",
+    "jsdom-global": "^3.0.2",
     "source-map-loader": "0.2.4",
     "style-loader": "1.0.0",
+    "ts-jest": "^26.5.2",
     "ts-loader": "6.0.4",
     "typescript": "3.8.3",
     "webpack": "4.39.3",

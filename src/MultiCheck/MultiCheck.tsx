@@ -23,7 +23,7 @@ type Props = {
   label?: string,
   options: Option[],
   columns?: number,
-  values?: string[]
+  values?: string[],
   onChange?: (options: Option[]) => void,
 }
 
@@ -84,10 +84,11 @@ const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
 
   const selesctAll = (
     <CheckBox 
-      handleChanged={onAllChanged} 
-      isChecked={!!selectAllChecked} 
+      checked={!!selectAllChecked} 
       label="Select All"
       value="all"
+      key="all"
+      handleChanged={onItemChanged}
       />
     )
   /**
@@ -101,11 +102,11 @@ const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
       options.slice(0, columnCounts-1).map((opt: Option) => {
         columnDom.push(
           <CheckBox
-            handleChanged={onItemChanged} 
-            isChecked={checked.indexOf(String(opt.value)) !== -1}
+            checked={checked.indexOf(String(opt.value)) !== -1}
             key={opt.value}
             label={opt.label}
             value={opt.value}
+            handleChanged={onItemChanged}
           />
         )
       })
@@ -114,21 +115,23 @@ const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
       options.slice(startIndex, columnCounts+startIndex).map((opt: Option) => {
         columnDom.push(
           <CheckBox
-            handleChanged={onItemChanged} 
-            isChecked={checked.indexOf(String(opt.value)) !== -1}
+            checked={checked.indexOf(String(opt.value)) !== -1}
             key={opt.value}
             label={opt.label}
             value={opt.value}
+            handleChanged={onItemChanged}
           />
         )
       })
     }
     return (
       <div 
+        key={index}
         style={{
           width: `${columnWidths}%`, 
           display: 'inline-block'
-        }}>
+        }}
+        >
         {columnDom}
       </div>
     );

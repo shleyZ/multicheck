@@ -1,4 +1,5 @@
 import React from 'react';
+import './CheckBox.css';
 
 type Props = {
   checked?: boolean,
@@ -18,7 +19,7 @@ const CheckBoxItem: React.FunctionComponent<Props> = (props): JSX.Element => {
         onChange={handleChanged}
         value={value}
       />
-      <span>{label}</span>
+      <span className="CheckboxLabel">{label}</span>
     </label>
   )
 }

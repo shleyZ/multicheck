@@ -1,0 +1,36 @@
+.CheckboxLabel{
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+input[type=checkbox]{
+  cursor: pointer;
+  position: relative;
+  width: 15px;
+  height: 15px;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+input[type=checkbox]::after{
+  position: absolute;
+  top: 0;
+  background-color: #fff;
+  color: #000;
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  visibility: visible;
+  padding: 0px;
+  text-align: center;
+  content: ' ';
+  border: 1px solid #999;
+}
+
+input[type=checkbox]:checked::after{
+  content: "✓";
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #000;
+  color: #fff;
+}

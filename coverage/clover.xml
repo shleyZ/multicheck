@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1614583985077" clover="3.2.0">
+  <project timestamp="1614583985077" name="All files">
+    <metrics statements="62" coveredstatements="56" conditionals="30" coveredconditionals="21" methods="12" coveredmethods="11" elements="104" coveredelements="88" complexity="0" loc="62" ncloc="62" packages="2" files="2" classes="2"/>
+    <package name="MultiCheck">
+      <metrics statements="56" coveredstatements="50" conditionals="30" coveredconditionals="21" methods="11" coveredmethods="10"/>
+      <file name="MultiCheck.tsx" path="/Users/shisonghu/mygithub/https-github.com-recruitment-cn-recruitment-dev-react-multicheck-homework-Xuelin-Zhao/src/MultiCheck/MultiCheck.tsx">
+        <metrics statements="56" coveredstatements="50" conditionals="30" coveredconditionals="21" methods="11" coveredmethods="10"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="21" type="stmt"/>
+        <line num="32" count="21" type="stmt"/>
+        <line num="33" count="21" type="stmt"/>
+        <line num="35" count="21" type="stmt"/>
+        <line num="36" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="9" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="46" count="21" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="49" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="50" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="53" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="60" count="21" type="stmt"/>
+        <line num="61" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="62" count="9" type="cond" truecount="4" falsecount="0"/>
+        <line num="63" count="2" type="stmt"/>
+        <line num="65" count="7" type="stmt"/>
+        <line num="70" count="21" type="stmt"/>
+        <line num="71" count="21" type="cond" truecount="1" falsecount="1"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="74" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="78" count="0" type="stmt"/>
+        <line num="83" count="21" type="cond" truecount="2" falsecount="0"/>
+        <line num="85" count="21" type="cond" truecount="2" falsecount="0"/>
+        <line num="88" count="21" type="stmt"/>
+        <line num="100" count="21" type="stmt"/>
+        <line num="101" count="44" type="stmt"/>
+        <line num="102" count="44" type="cond" truecount="2" falsecount="0"/>
+        <line num="103" count="21" type="stmt"/>
+        <line num="104" count="21" type="stmt"/>
+        <line num="105" count="70" type="stmt"/>
+        <line num="116" count="23" type="stmt"/>
+        <line num="117" count="23" type="stmt"/>
+        <line num="118" count="81" type="stmt"/>
+        <line num="129" count="44" type="stmt"/>
+        <line num="146" count="21" type="stmt"/>
+        <line num="147" count="21" type="stmt"/>
+        <line num="148" count="21" type="stmt"/>
+        <line num="149" count="44" type="stmt"/>
+        <line num="150" count="44" type="stmt"/>
+        <line num="152" count="21" type="stmt"/>
+        <line num="155" count="21" type="stmt"/>
+        <line num="170" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="MultiCheck.components">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="CheckBox.tsx" path="/Users/shisonghu/mygithub/https-github.com-recruitment-cn-recruitment-dev-react-multicheck-homework-Xuelin-Zhao/src/MultiCheck/components/CheckBox.tsx">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="176" type="stmt"/>
+        <line num="14" count="176" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

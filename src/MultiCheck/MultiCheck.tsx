@@ -88,7 +88,7 @@ const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
       label="Select All"
       value="all"
       key="all"
-      handleChanged={onItemChanged}
+      handleChanged={onAllChanged}
       />
     )
   /**

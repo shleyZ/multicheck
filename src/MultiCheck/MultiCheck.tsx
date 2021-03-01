@@ -56,6 +56,7 @@ const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
     setSelectAllChecked(currentChecked.length === options.length)
   }
 
+  // initialized checked state
   useEffect(() => {
     setChecked(values || []);
     if(values && values.length === options.length) {
@@ -65,6 +66,7 @@ const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
     }
   }, []);
 
+  // Monitor the checked state and react to the higher-level component
   useEffect(() => {
     if(onChange) {
       const checkedOptions = [] as Option[];
@@ -137,7 +139,10 @@ const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
     );
   }
 
-  // render all columns
+  /**
+   * render all columns
+   * @param {number} columns 
+   */
   const renderColumns = (columns: number) => {
     const res = [];
     for(let i = 0; i < columns; i++) {

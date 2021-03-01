@@ -19,7 +19,9 @@ exports[`CheckBox snapshot get snapshot 1`] = `
       type="checkbox"
       value="no"
     />
-    <span />
+    <span
+      className="CheckboxLabel"
+    />
   </label>
 </CheckBoxItem>
 `;

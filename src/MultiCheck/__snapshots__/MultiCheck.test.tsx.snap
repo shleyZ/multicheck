@@ -50,7 +50,9 @@ exports[`MultiCheck snapshot get snapshot 1`] = `
                 type="checkbox"
                 value="all"
               />
-              <span>
+              <span
+                className="CheckboxLabel"
+              >
                 Select All
               </span>
             </label>

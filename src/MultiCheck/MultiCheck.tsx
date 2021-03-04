@@ -28,7 +28,7 @@ type Props = {
 }
 
 const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
-  const { label, options, values, onChange, columns } = props;
+  const { label, options, values, onChange, columns = 1 } = props;
   const [checked, setChecked] = useState<string[]>([]);
   const [selectAllChecked, setSelectAllChecked] = useState<boolean>(false);
 
@@ -80,11 +80,11 @@ const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
   }, [checked])
 
   // counts per columns
-  const columnCounts = Math.ceil(options.length / (columns || 1));
+  const columnCounts = Math.ceil(options.length / (columns));
   // column percent %
-  const columnWidths = 1/(columns || 1) * 100;
+  const columnWidths = 1/(columns) * 100;
 
-  const selesctAll = (
+  const selectAll = (
     <CheckBox 
       checked={!!selectAllChecked} 
       label="Select All"
@@ -100,7 +100,7 @@ const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
   const renderColumn = (index: number) => {
     const columnDom = [];
     if(index === 0) {
-      columnDom.push(selesctAll)
+      columnDom.push(selectAll)
       options.slice(0, columnCounts-1).map((opt: Option) => {
         columnDom.push(
           <CheckBox
@@ -160,7 +160,7 @@ const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
       </div>
       <div className="MultiCheckContentWrap">
         <div className="MultiCheckContent">
-          {renderColumns(columns || 1)}
+          {renderColumns(columns)}
         </div>
       </div>
     </div>

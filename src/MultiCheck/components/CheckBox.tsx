@@ -2,10 +2,10 @@ import React from 'react';
 import './CheckBox.css';
 
 type Props = {
-  checked?: boolean,
-  label?: string,
+  checked: boolean,
+  label: string,
   value: string,
-  handleChanged?: (event: React.ChangeEvent<HTMLInputElement>) => void,
+  handleChanged: (event: React.ChangeEvent<HTMLInputElement>) => void,
 }
 
 const CheckBoxItem: React.FunctionComponent<Props> = (props): JSX.Element => {

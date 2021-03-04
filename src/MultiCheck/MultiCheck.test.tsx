@@ -10,6 +10,18 @@ import type { Option } from './MultiCheck';
 
 configure({adapter: new Adapter()});
 
+const options: Option[] = [
+  {label: 'aaa', value: '111',},
+  {label: 'bbb', value: '222',},
+  {label: 'ccc', value: '333',},
+  {label: 'ddd', value: '444',},
+  {label: 'eee', value: '555',},
+  {label: 'fff', value: '666',},
+  {label: 'ggg', value: '777',},
+  {label: 'hhh', value: '888',},
+  {label: 'iii', value: '999',},
+]
+
 describe('MultiCheck', () => {
   describe('initialize', () => {
     it('renders the label if label provided', () => {
@@ -21,17 +33,6 @@ describe('MultiCheck', () => {
     });
 
     it('renders 1 columns if columns is not provided', () => {
-      const options: Option[] = [
-        {label: 'aaa', value: '111',},
-        {label: 'bbb', value: '222',},
-        {label: 'ccc', value: '333',},
-        {label: 'ddd', value: '444',},
-        {label: 'eee', value: '555',},
-        {label: 'fff', value: '666',},
-        {label: 'ggg', value: '777',},
-        {label: 'hhh', value: '888',},
-        {label: 'iii', value: '999',},
-      ]
       const wrapper = mount(
         <MultiCheck label='my-multi-check' options={options}/>
       );
@@ -39,17 +40,6 @@ describe('MultiCheck', () => {
     });
 
     it('renders 6 columns if columns provided 6', () => {
-      const options: Option[] = [
-        {label: 'aaa', value: '111',},
-        {label: 'bbb', value: '222',},
-        {label: 'ccc', value: '333',},
-        {label: 'ddd', value: '444',},
-        {label: 'eee', value: '555',},
-        {label: 'fff', value: '666',},
-        {label: 'ggg', value: '777',},
-        {label: 'hhh', value: '888',},
-        {label: 'iii', value: '999',},
-      ]
       const wrapper = mount(
         <MultiCheck label='my-multi-check' options={options} columns={6}/>
       );
@@ -57,17 +47,6 @@ describe('MultiCheck', () => {
     });
 
     it('renders 2 columns', () => {
-      const options: Option[] = [
-        {label: 'aaa', value: '111',},
-        {label: 'bbb', value: '222',},
-        {label: 'ccc', value: '333',},
-        {label: 'ddd', value: '444',},
-        {label: 'eee', value: '555',},
-        {label: 'fff', value: '666',},
-        {label: 'ggg', value: '777',},
-        {label: 'hhh', value: '888',},
-        {label: 'iii', value: '999',},
-      ]
       const wrapper = mount(
         <MultiCheck label='my-multi-check' options={options} columns={2}/>
       );
@@ -75,17 +54,6 @@ describe('MultiCheck', () => {
     });
 
     it('select all checked status must be true', () => {
-      const options: Option[] = [
-        {label: 'aaa', value: '111',},
-        {label: 'bbb', value: '222',},
-        {label: 'ccc', value: '333',},
-        {label: 'ddd', value: '444',},
-        {label: 'eee', value: '555',},
-        {label: 'fff', value: '666',},
-        {label: 'ggg', value: '777',},
-        {label: 'hhh', value: '888',},
-        {label: 'iii', value: '999',},
-      ]
       const checkedValues = [
         '111',
         '222',
@@ -108,17 +76,6 @@ describe('MultiCheck', () => {
 
   describe('status changed', () => {
     it('simulate checked all changed to false', () => {
-      const options: Option[] = [
-        {label: 'aaa', value: '111',},
-        {label: 'bbb', value: '222',},
-        {label: 'ccc', value: '333',},
-        {label: 'ddd', value: '444',},
-        {label: 'eee', value: '555',},
-        {label: 'fff', value: '666',},
-        {label: 'ggg', value: '777',},
-        {label: 'hhh', value: '888',},
-        {label: 'iii', value: '999',},
-      ]
       const checkedValues = [
         '111',
         '222',
@@ -142,17 +99,6 @@ describe('MultiCheck', () => {
     })
 
     it('simulate checked all changed to true', () => {
-      const options: Option[] = [
-        {label: 'aaa', value: '111',},
-        {label: 'bbb', value: '222',},
-        {label: 'ccc', value: '333',},
-        {label: 'ddd', value: '444',},
-        {label: 'eee', value: '555',},
-        {label: 'fff', value: '666',},
-        {label: 'ggg', value: '777',},
-        {label: 'hhh', value: '888',},
-        {label: 'iii', value: '999',},
-      ]
       const checkedValues = [
         '111',
       ]
@@ -168,17 +114,6 @@ describe('MultiCheck', () => {
     })
 
     it('simulate checked item changed', () => {
-      const options: Option[] = [
-        {label: 'aaa', value: '111',},
-        {label: 'bbb', value: '222',},
-        {label: 'ccc', value: '333',},
-        {label: 'ddd', value: '444',},
-        {label: 'eee', value: '555',},
-        {label: 'fff', value: '666',},
-        {label: 'ggg', value: '777',},
-        {label: 'hhh', value: '888',},
-        {label: 'iii', value: '999',},
-      ]
       const checkedValues = [
         '222',
         '333',

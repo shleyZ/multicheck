@@ -99,34 +99,26 @@ const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
    */
   const renderColumn = (index: number) => {
     const columnDom = [];
+    let columnOptions = [];
     
     if(index === 0) {
       columnDom.push(selectAll)
-      options.slice(0, columnCounts-1).map((opt: Option) => {
-        columnDom.push(
-          <CheckBox
-            checked={checkedValues.indexOf(String(opt.value)) !== -1}
-            key={opt.value}
-            label={opt.label}
-            value={opt.value}
-            handleChanged={onItemChanged}
-          />
-        )
-      })
+      columnOptions = options.slice(0, columnCounts-1);
     } else {
-      const startIndex = (index - 1)*columnCounts + (columnCounts - 1)
-      options.slice(startIndex, columnCounts+startIndex).map((opt: Option) => {
-        columnDom.push(
-          <CheckBox
-            checked={checkedValues.indexOf(String(opt.value)) !== -1}
-            key={opt.value}
-            label={opt.label}
-            value={opt.value}
-            handleChanged={onItemChanged}
-          />
-        )
-      })
+      const startIndex = (index - 1)*columnCounts + (columnCounts - 1);
+      columnOptions = options.slice(startIndex, columnCounts+startIndex);
     }
+    columnOptions.map((opt: Option) => {
+      columnDom.push(
+        <CheckBox
+          checked={checkedValues.indexOf(String(opt.value)) !== -1}
+          key={opt.value}
+          label={opt.label}
+          value={opt.value}
+          handleChanged={onItemChanged}
+        />
+      )
+    })
     return (
       <div 
         key={index}

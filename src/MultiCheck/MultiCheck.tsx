@@ -44,7 +44,7 @@ const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
   }
 
   const onItemChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const strValue = String(e.target.value);
+    const strValue = e.target.value;
     const currentChecked = [...checked];
     const index = currentChecked?.indexOf(strValue)
     if(index === -1) {

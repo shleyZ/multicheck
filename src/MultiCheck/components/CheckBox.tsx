@@ -3,7 +3,7 @@ import './CheckBox.css';
 
 type Props = {
   checked: boolean,
-  label: string,
+  label?: string,
   value: string,
   handleChanged: (event: React.ChangeEvent<HTMLInputElement>) => void,
 }

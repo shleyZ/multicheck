@@ -12,16 +12,15 @@ configure({adapter: new Adapter()});
 
 describe('MultiCheck', () => {
   describe('initialize', () => {
-    it('renders the label if label provided', (done) => {
+    it('renders the label if label provided', () => {
       // TODO
       const wrapper = mount(
         <MultiCheck label='my-multi-check' options={[]} />
       );
       expect(wrapper.html()).toContain('<label>my-multi-check</label>');
-      done()
     });
 
-    it('renders 1 columns if columns is not provided', (done) => {
+    it('renders 1 columns if columns is not provided', () => {
       const options: Option[] = [
         {label: 'aaa', value: '111',},
         {label: 'bbb', value: '222',},
@@ -37,10 +36,9 @@ describe('MultiCheck', () => {
         <MultiCheck label='my-multi-check' options={options}/>
       );
       expect(wrapper.find('.MultiCheckContent').children().length).toBe(1);
-      done()
     });
 
-    it('renders 6 columns if columns provided 6', (done) => {
+    it('renders 6 columns if columns provided 6', () => {
       const options: Option[] = [
         {label: 'aaa', value: '111',},
         {label: 'bbb', value: '222',},
@@ -56,10 +54,9 @@ describe('MultiCheck', () => {
         <MultiCheck label='my-multi-check' options={options} columns={6}/>
       );
       expect(wrapper.find('.MultiCheckContent').children().length).toBe(6);
-      done()
     });
 
-    it('renders 2 columns', (done) => {
+    it('renders 2 columns', () => {
       const options: Option[] = [
         {label: 'aaa', value: '111',},
         {label: 'bbb', value: '222',},
@@ -75,10 +72,9 @@ describe('MultiCheck', () => {
         <MultiCheck label='my-multi-check' options={options} columns={2}/>
       );
       expect(wrapper.find('.MultiCheckContent').children().length).toBe(2);
-      done()
     });
 
-    it('select all checked status must be true', (done) => {
+    it('select all checked status must be true', () => {
       const options: Option[] = [
         {label: 'aaa', value: '111',},
         {label: 'bbb', value: '222',},
@@ -107,12 +103,11 @@ describe('MultiCheck', () => {
       const columns = wrapper.find('.MultiCheckContent').children();
       const selectAll = columns.first().find('input[type="checkbox"]').first()
       expect(selectAll.props().checked).toBe(true);
-      done()
     })
   });
 
   describe('status changed', () => {
-    it('simulate checked all changed to false', (done) => {
+    it('simulate checked all changed to false', () => {
       const options: Option[] = [
         {label: 'aaa', value: '111',},
         {label: 'bbb', value: '222',},
@@ -144,10 +139,9 @@ describe('MultiCheck', () => {
       expect(selectAllEle.props().checked).toEqual(true);;
       selectAllEle.simulate('change', {target: {checked: false}});
       expect(wrapper.find('.MultiCheckContent').children().first().find('input[type="checkbox"]').first().props().checked).toEqual(false);;
-      done()
     })
 
-    it('simulate checked all changed to true', (done) => {
+    it('simulate checked all changed to true', () => {
       const options: Option[] = [
         {label: 'aaa', value: '111',},
         {label: 'bbb', value: '222',},
@@ -171,10 +165,9 @@ describe('MultiCheck', () => {
       expect(selectAllEle.props().checked).toEqual(false);;
       selectAllEle.simulate('change', {target: {checked: true}});
       expect(wrapper.find('.MultiCheckContent').children().first().find('input[type="checkbox"]').first().props().checked).toEqual(true);;
-      done()
     })
 
-    it('simulate checked item changed', (done) => {
+    it('simulate checked item changed', () => {
       const options: Option[] = [
         {label: 'aaa', value: '111',},
         {label: 'bbb', value: '222',},
@@ -207,7 +200,6 @@ describe('MultiCheck', () => {
       const unchecked = columns().first().find('input[type="checkbox"]').at(1);
       unchecked.simulate('change', {target: {checked: true}});
       expect(wrapper.find('.MultiCheckContent').children().first().find('input[type="checkbox"]').first().props().checked).toEqual(true);;
-      done()
     })
   })
 

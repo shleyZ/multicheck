@@ -11,28 +11,25 @@ configure({adapter: new Adapter()});
 
 describe('CheckBox', () => {
   describe('initialize', () => {
-    it('test the checked props', (done) => {
+    it('test the checked props', () => {
       const wrapper = mount(
         <CheckBox checked={false} value="no" handleChanged={() => {}} />
       );
       expect(wrapper.find('input[type="checkbox"]').first().props().checked).toBe(false)
-      done()
     });
 
-    it('test the value props', (done) => {
+    it('test the value props', () => {
       const wrapper = mount(
         <CheckBox checked={false} value="no" handleChanged={() => {}}/>
       );
       expect(wrapper.find('input[type="checkbox"]').first().props().value).toBe('no')
-      done()
     });
 
-    it('test the label props', (done) => {
+    it('test the label props', () => {
       const wrapper = mount(
         <CheckBox checked={false} value="no" label="status" handleChanged={() => {}}/>
       );
       expect(wrapper.find('span').first().props().children).toBe('status')
-      done()
     });
   });
 

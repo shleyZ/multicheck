@@ -29,36 +29,36 @@ type Props = {
 
 const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
   const { label, options, values, onChange, columns = 1 } = props;
-  const [checked, setChecked] = useState<string[]>([]);
+  const [checkedValues, setCheckedValues] = useState<string[]>([]);
   const [selectAllChecked, setSelectAllChecked] = useState<boolean>(false);
 
   const onAllChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
     if(selectAllChecked) {
-      setChecked([])
+      setCheckedValues([])
     } else {
       const allValues = [] as string[];
       options.forEach((item: Option) => allValues.push(item.value))
-      setChecked(allValues)
+      setCheckedValues(allValues)
     }
     setSelectAllChecked(!selectAllChecked)
   }
 
   const onItemChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
     const strValue = e.target.value;
-    const currentChecked = [...checked];
+    const currentChecked = [...checkedValues];
     const index = currentChecked?.indexOf(strValue)
     if(index === -1) {
       currentChecked.push(strValue)
     } else {
       currentChecked?.splice(index, 1)
     }
-    setChecked(currentChecked)
+    setCheckedValues(currentChecked)
     setSelectAllChecked(currentChecked.length === options.length)
   }
 
-  // initialized checked state
+  // initialized checkedValues state
   useEffect(() => {
-    setChecked(values || []);
+    setCheckedValues(values || []);
     if(values && values.length === options.length) {
       setSelectAllChecked(true)
     } else {
@@ -66,18 +66,18 @@ const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
     }
   }, [values]);
 
-  // Monitor the checked state and react to the higher-level component
+  // Monitor the checkedValues state and react to the higher-level component
   useEffect(() => {
     if(onChange) {
       const checkedOptions = [] as Option[];
       options.forEach((option) => {
-        if(checked.indexOf(option.value) !== -1) {
+        if(checkedValues.indexOf(option.value) !== -1) {
           checkedOptions.push(option)
         }
       })
       onChange(checkedOptions);
     }
-  }, [checked])
+  }, [checkedValues])
 
   // counts per columns
   const columnCounts = Math.ceil(options.length / (columns));
@@ -105,7 +105,7 @@ const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
       options.slice(0, columnCounts-1).map((opt: Option) => {
         columnDom.push(
           <CheckBox
-            checked={checked.indexOf(String(opt.value)) !== -1}
+            checked={checkedValues.indexOf(String(opt.value)) !== -1}
             key={opt.value}
             label={opt.label}
             value={opt.value}
@@ -118,7 +118,7 @@ const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
       options.slice(startIndex, columnCounts+startIndex).map((opt: Option) => {
         columnDom.push(
           <CheckBox
-            checked={checked.indexOf(String(opt.value)) !== -1}
+            checked={checkedValues.indexOf(String(opt.value)) !== -1}
             key={opt.value}
             label={opt.label}
             value={opt.value}

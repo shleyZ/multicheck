@@ -64,7 +64,7 @@ const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
     } else {
       setSelectAllChecked(false)
     }
-  }, []);
+  }, [values]);
 
   // Monitor the checked state and react to the higher-level component
   useEffect(() => {
@@ -99,6 +99,7 @@ const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
    */
   const renderColumn = (index: number) => {
     const columnDom = [];
+    
     if(index === 0) {
       columnDom.push(selectAll)
       options.slice(0, columnCounts-1).map((opt: Option) => {

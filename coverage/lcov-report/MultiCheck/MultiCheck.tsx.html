@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.66% </span>
+                <span class="strong">89.83% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>52/58</span>
+                <span class='fraction'>53/59</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">70% </span>
+                <span class="strong">64% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>21/30</span>
+                <span class='fraction'>16/25</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.91% </span>
+                <span class="strong">90% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>10/11</span>
+                <span class='fraction'>9/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.29% </span>
+                <span class="strong">89.47% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>50/56</span>
+                <span class='fraction'>51/57</span>
             </div>
         
             
@@ -220,14 +220,7 @@
 <a name='L161'></a><a href='#L161'>161</a>
 <a name='L162'></a><a href='#L162'>162</a>
 <a name='L163'></a><a href='#L163'>163</a>
-<a name='L164'></a><a href='#L164'>164</a>
-<a name='L165'></a><a href='#L165'>165</a>
-<a name='L166'></a><a href='#L166'>166</a>
-<a name='L167'></a><a href='#L167'>167</a>
-<a name='L168'></a><a href='#L168'>168</a>
-<a name='L169'></a><a href='#L169'>169</a>
-<a name='L170'></a><a href='#L170'>170</a>
-<a name='L171'></a><a href='#L171'>171</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L164'></a><a href='#L164'>164</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -329,23 +322,16 @@
 <span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-yes">44x</span>
 <span class="cline-any cline-yes">44x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">44x</span>
 <span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">70x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">81x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">44x</span>
+<span class="cline-any cline-yes">151x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -427,63 +413,63 @@ type Props = {
 }
 &nbsp;
 const MultiCheck: React.FunctionComponent&lt;Props&gt; = (props): JSX.Element =&gt; {
-  const { label, options, values, onChange, columns } = props;
-  const [checked, setChecked] = useState&lt;string[]&gt;([]);
+  const { label, options, values, onChange, columns = 1 } = props;
+  const [checkedValues, setCheckedValues] = useState&lt;string[]&gt;([]);
   const [selectAllChecked, setSelectAllChecked] = useState&lt;boolean&gt;(false);
 &nbsp;
   const onAllChanged = (e: React.ChangeEvent&lt;HTMLInputElement&gt;) =&gt; {
     if(selectAllChecked) {
-      setChecked([])
+      setCheckedValues([])
     } else {
       const allValues = [] as string[];
       options.forEach((item: Option) =&gt; allValues.push(item.value))
-      setChecked(allValues)
+      setCheckedValues(allValues)
     }
     setSelectAllChecked(!selectAllChecked)
   }
 &nbsp;
   const onItemChanged = (e: React.ChangeEvent&lt;HTMLInputElement&gt;) =&gt; {
-    const strValue = String(e.target.value);
-    const currentChecked = [...checked];
+    const strValue = e.target.value;
+    const currentChecked = [...checkedValues];
     const index = currentChecked<span class="branch-0 cbranch-no" title="branch not covered" >?.i</span>ndexOf(strValue)
     <span class="missing-if-branch" title="else path not taken" >E</span>if(index === -1) {
       currentChecked.push(strValue)
     } else {
 <span class="cstat-no" title="statement not covered" >      currentChecked?.splice(index, 1)</span>
     }
-    setChecked(currentChecked)
+    setCheckedValues(currentChecked)
     setSelectAllChecked(currentChecked.length === options.length)
   }
 &nbsp;
-  // initialized checked state
+  // initialized checkedValues state
   useEffect(() =&gt; {
-    setChecked(values || []);
+    setCheckedValues(values || []);
     if(values &amp;&amp; values.length === options.length) {
       setSelectAllChecked(true)
     } else {
       setSelectAllChecked(false)
     }
-  }, []);
+  }, [values]);
 &nbsp;
-  // Monitor the checked state and react to the higher-level component
+  // Monitor the checkedValues state and react to the higher-level component
   useEffect(() =&gt; {
     <span class="missing-if-branch" title="if path not taken" >I</span>if(onChange) {
       const checkedOptions = <span class="cstat-no" title="statement not covered" >[] as Option[];</span>
 <span class="cstat-no" title="statement not covered" >      options.forEach(<span class="fstat-no" title="function not covered" >(o</span>ption) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        if(checked.indexOf(option.value) !== -1) {</span>
+<span class="cstat-no" title="statement not covered" >        if(checkedValues.indexOf(option.value) !== -1) {</span>
 <span class="cstat-no" title="statement not covered" >          checkedOptions.push(option)</span>
         }
       })
 <span class="cstat-no" title="statement not covered" >      onChange(checkedOptions);</span>
     }
-  }, [checked])
+  }, [checkedValues])
 &nbsp;
   // counts per columns
-  const columnCounts = Math.ceil(options.length / (columns || 1));
+  const columnCounts = Math.ceil(options.length / (columns));
   // column percent %
-  const columnWidths = 1/(columns || 1) * 100;
+  const columnWidths = 1/(columns) * 100;
 &nbsp;
-  const selesctAll = (
+  const selectAll = (
     &lt;CheckBox 
       checked={!!selectAllChecked} 
       label="Select All"
@@ -498,33 +484,26 @@ const MultiCheck: React.FunctionComponent&lt;Props&gt; = (props): JSX.Element =&
    */
   const renderColumn = (index: number) =&gt; {
     const columnDom = [];
+    let columnOptions = [];
+    
     if(index === 0) {
-      columnDom.push(selesctAll)
-      options.slice(0, columnCounts-1).map((opt: Option) =&gt; {
-        columnDom.push(
-          &lt;CheckBox
-            checked={checked.indexOf(String(opt.value)) !== -1}
-            key={opt.value}
-            label={opt.label}
-            value={opt.value}
-            handleChanged={onItemChanged}
-          /&gt;
-        )
-      })
+      columnDom.push(selectAll)
+      columnOptions = options.slice(0, columnCounts-1);
     } else {
-      const startIndex = (index - 1)*columnCounts + (columnCounts - 1)
-      options.slice(startIndex, columnCounts+startIndex).map((opt: Option) =&gt; {
-        columnDom.push(
-          &lt;CheckBox
-            checked={checked.indexOf(String(opt.value)) !== -1}
-            key={opt.value}
-            label={opt.label}
-            value={opt.value}
-            handleChanged={onItemChanged}
-          /&gt;
-        )
-      })
+      const startIndex = (index - 1)*columnCounts + (columnCounts - 1);
+      columnOptions = options.slice(startIndex, columnCounts+startIndex);
     }
+    columnOptions.map((opt: Option) =&gt; {
+      columnDom.push(
+        &lt;CheckBox
+          checked={checkedValues.indexOf(String(opt.value)) !== -1}
+          key={opt.value}
+          label={opt.label}
+          value={opt.value}
+          handleChanged={onItemChanged}
+        /&gt;
+      )
+    })
     return (
       &lt;div 
         key={index}
@@ -559,7 +538,7 @@ const MultiCheck: React.FunctionComponent&lt;Props&gt; = (props): JSX.Element =&
       &lt;/div&gt;
       &lt;div className="MultiCheckContentWrap"&gt;
         &lt;div className="MultiCheckContent"&gt;
-          {renderColumns(columns || 1)}
+          {renderColumns(columns)}
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -574,7 +553,7 @@ export default MultiCheck;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Mon Mar 01 2021 15:33:05 GMT+0800 (中国标准时间)
+                at Mon Apr 12 2021 18:04:12 GMT+0800 (GMT+08:00)
             </div>
         </div>
         <script src="../prettify.js"></script>

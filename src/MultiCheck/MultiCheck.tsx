@@ -29,7 +29,7 @@ type Props = {
 
 const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
   const { label, options, values, onChange, columns = 1 } = props;
-  const [checkedValues, setCheckedValues] = useState<string[]>([]);
+  const [checkedValues, setCheckedValues] = useState<string[]>(values || []);
   const [selectAllChecked, setSelectAllChecked] = useState<boolean>(false);
 
   const onAllChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,14 +57,17 @@ const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
   }
 
   // initialized checkedValues state
-  useEffect(() => {
-    setCheckedValues(values || []);
-    if(values && values.length === options.length) {
-      setSelectAllChecked(true)
-    } else {
-      setSelectAllChecked(false)
-    }
-  }, [values]);
+  // useEffect(() => {
+    // console.log('values:', values)
+    // if(values.length > 0) {
+    //   setCheckedValues(values);
+    //   if(values && values.length === options.length) {
+    //     setSelectAllChecked(true)
+    //   } else {
+    //     setSelectAllChecked(false)
+    //   }
+    // }
+  // }, [values]);
 
   // Monitor the checkedValues state and react to the higher-level component
   useEffect(() => {

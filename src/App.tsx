@@ -27,11 +27,13 @@ const App: React.FunctionComponent = (): JSX.Element => {
 
   return <div>
     <h1>Multi Check Component</h1>
-    <MultiCheck label='my-multi-check' options={options}
-                onChange={onSelectedOptionsChange}
-                values={selectedValues}
-                columns={5}
-                />
+    <MultiCheck 
+      label='my-multi-check' 
+      options={options}
+      onChange={onSelectedOptionsChange}
+      defaultValues={defaultValues}
+      columns={5}
+      />
     <div>
       <h2>Current selected values:</h2>
       <div>{selectedValues.join(',')}</div>

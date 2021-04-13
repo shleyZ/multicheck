@@ -66,7 +66,7 @@ describe('MultiCheck', () => {
         '999'
       ]
       const wrapper = mount(
-        <MultiCheck label='my-multi-check' options={options} columns={2} values={checkedValues}/>
+        <MultiCheck label='my-multi-check' options={options} columns={2} defaultValues={checkedValues}/>
       );
       const columns = wrapper.find('.MultiCheckContent').children();
       const selectAll = columns.first().find('input[type="checkbox"]').first()
@@ -88,7 +88,7 @@ describe('MultiCheck', () => {
         '999'
       ]
       const wrapper = mount(
-        <MultiCheck label='my-multi-check' options={options} columns={2} values={checkedValues} />
+        <MultiCheck label='my-multi-check' options={options} columns={2} defaultValues={checkedValues} />
       );
       
       const columns = () => wrapper.find('.MultiCheckContent').children();
@@ -103,7 +103,7 @@ describe('MultiCheck', () => {
         '111',
       ]
       const wrapper = mount(
-        <MultiCheck label='my-multi-check' options={options} columns={2} values={checkedValues} />
+        <MultiCheck label='my-multi-check' options={options} columns={2} defaultValues={checkedValues} />
       );
       
       const columns = () => wrapper.find('.MultiCheckContent').children();
@@ -125,7 +125,7 @@ describe('MultiCheck', () => {
         '999'
       ]
       const wrapper = mount(
-        <MultiCheck label='my-multi-check' options={options} columns={2} values={checkedValues} />
+        <MultiCheck label='my-multi-check' options={options} columns={2} defaultValues={checkedValues} />
       );
       
       const columns = () => wrapper.find('.MultiCheckContent').children();
